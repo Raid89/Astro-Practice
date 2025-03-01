@@ -1,0 +1,21 @@
+---
+import type { PokemonDetailResponse } from '../../interfaces/pokemon-detail-response';
+
+interface Props {
+    name: string;
+    url: string;    
+}
+
+const { name, url } = Astro.props;
+
+const id = url.split('/').at(-2);
+const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+---
+
+<a 
+    href={`/pokemons/${name}`}
+    class="rounded flex flex-col justify-center items-center bg-slate-700 p-4"
+>
+    <img src={ image } alt={`Pokemon ${name}`} />
+    <span class="capitalize">{ name }</span>
+</a>
